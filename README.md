@@ -1,3 +1,29 @@
+## React-Query to handle API
+This project is using React-Query to handle RESTFul API and caching response in top app context.
+
+You can learn more in the [React-Query](https://tanstack.com/query/v3/).
+
+## Overview
+In this project, we have flowing approach:
+1. Render first 20 products using useInfiniteQuery.
+2. Using IntersectionObserver to define whether user has scroll down to last product then fetch the next 20 products.
+I made `useIntersectionObserver()` hook for convenient
+3. Show `<footer />` when user reach the last product in total products available to let user know that they have reach the limit products
+
+Here's an example of how you'd test a custom hook with `useIntersectionObserver()`:
+```javascript
+    const ref = useRef<HTMLDivElement | null>(null);
+    const entry = useIntersectionObserver(ref, {
+        threshold: 0,
+        root: null,
+        rootMargin: '50%',
+        freezeOnceVisible: false,
+    });
+    const isVisible = !!entry?.isIntersecting;
+```
+
+For the search product, I use `useDebounce()` to limit the request send to server when user is typing continuously and call the one API with the last input
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
